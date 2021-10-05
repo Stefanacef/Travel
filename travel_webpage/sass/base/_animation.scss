@@ -1,0 +1,42 @@
+/* Ok deci sunt super entuziamta */
+/* bun deci cream animatia cu ajutorul @keyframe careia ii dam un nume */
+@keyframes moveInLeft {
+    /* acesta este elementul inainte inceperii animatiei
+      - pentru ac am pus opacity 0, va dinsparea, dar animatia il face sa apara progresiv 
+      -va aparea progresiv in timpu setat*/
+    0% {
+      opacity: 0;
+      transform: translateX(-2rem);
+    }
+    80% {
+      transform: translateX(1rem);
+    }
+    /* aici este la sfrasitul animatie,pentru ca am pus opacity 100% va aparea  */
+    100% {
+      opacity: 100%;
+      transform: translate(0);
+    }
+  }
+  @keyframes moveInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(2rem);
+    }
+    80% {
+      transform: translateX(-1rem);
+    }
+    100% {
+      opacity: 100%;
+      transform: translate(0);
+    }
+  }
+  @keyframes moveInBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+    100% {
+      opacity: 100%;
+      transform: translate(0);
+    }
+  }

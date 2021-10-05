@@ -1,0 +1,186 @@
+/*
+COLORS:
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+*/
+/* Acestra * este seletorul universal, cum paginile vin cu un style predefinit
+acesta * va elimina acele predefiniir la modul general pe toata elementele */
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  /* Acesta box-sizing:border-box;insemna ca ca latimea si inaltimea raman fix cele pe care leai pus
+    nu se vorm modifica in functie de volumul contentului, daca vrei sa se modifice folosesti box-sizing: content-box; */
+  box-sizing: inherit; }
+
+html {
+  /* Astea inseamna defapt 10 pixeli
+    16 pixeli=100%
+    10%=62.5% */
+  font-size: 62.5%; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  /* line-height: este dinstranta intre randuri cea recomandata este de 1,6; */
+  line-height: 1.7;
+  padding: 3rem;
+  box-sizing: border-box;
+  color: #777; }
+
+.header {
+  /* unul din cele mai importante lucruri este vh, care defapt pune acel header sa aiba o inaltime de 95%
+    din intregul egrac, cumva asa s-ar traduce  */
+  height: 95vh;
+  background-image: linear-gradient(to right, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../imagini/munteDecup.jpg);
+  background-size: cover;
+  /* orccat de mic ar fi ecranul,imaginea nu se va misca din top,asta face bk-position:top, ceea ce este super */
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* acest clip-path, i-a coordonate x,y incepand din colul stang sus! */
+  position: relative; }
+
+/* ------------LOGO------------- */
+.header__logo-box {
+  /* nu uita ca absolut sa mearga, parintele lui trebuie sa fie pozitionat relativ,
+    daca parintele nu e relativ va pozitiona elemtul in functie de body */
+  position: absolute;
+  top: 4rem;
+  left: 4rem; }
+
+.header__logo {
+  height: 3.5rem; }
+
+/* --------------HEADING TEXT---------------- */
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  /* deci acest transfor, muta centrele(mijloacele elementului,luta cel din lijloc in stanga cu 50% si cel 
+celallat sus, defapt sunt axa x si y transform:traslate */
+  transform: translate(-50%, -50%);
+  text-align: center; }
+
+.heading-primay {
+  color: 3;
+  /* in caz ca elemntul tremura,nu am inteles prea mult  */
+  backface-visibility: hidden;
+  margin-bottom: 4rem; }
+
+.heading-primay--main,
+.heading-primay--sub {
+  display: block;
+  animation-duration: 1s;
+  /* cum sa fie animatia, mai inect la inceput si mai acelerata la sfrasit */
+  animation-timing-function: ease-in; }
+
+.heading-primay--main {
+  font-size: 6rem;
+  font-weight: 800;
+  letter-spacing: 2.5rem;
+  /* ca animatia sa aiba loc pe un anumit obiect trebuie sa scriem denumirea animatiei in element
+    -durata este de o secunda, asa cum este scis si mai jos, tota animatia se va face intr-o secunda
+    -schimbarea opacitati,miscrile pe axa x sau y  */
+  animation-name: moveInLeft; }
+
+.heading-primay--sub {
+  font-size: 4rem;
+  letter-spacing: 0.68rem;
+  animation-name: moveInRight;
+  position: relative;
+  right: 0.6rem;
+  font-weight: 500; }
+
+/* Ok deci sunt super entuziamta */
+/* bun deci cream animatia cu ajutorul @keyframe careia ii dam un nume */
+@keyframes moveInLeft {
+  /* acesta este elementul inainte inceperii animatiei
+    - pentru ac am pus opacity 0, va dinsparea, dar animatia il face sa apara progresiv 
+    -va aparea progresiv in timpu setat*/
+  0% {
+    opacity: 0;
+    transform: translateX(-2rem); }
+  80% {
+    transform: translateX(1rem); }
+  /* aici este la sfrasitul animatie,pentru ca am pus opacity 100% va aparea  */
+  100% {
+    opacity: 100%;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(2rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 100%;
+    transform: translate(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 100%;
+    transform: translate(0); } }
+
+/* --BTN MAIN-HADER-- */
+/* Am pus link,pentru ca acest obiect este de tip link
+-Visited, insemna ca a vizitat candva acest buton, dar noi vrem sa arate la fel ca si cand nu l-ar fi vizitat */
+.btn:link,
+.btn:visited {
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  color: #777;
+  text-transform: uppercase;
+  display: inline-block;
+  border-radius: 10rem;
+  position: relative;
+  transition: all 0.2s;
+  font-size: 1.6rem; }
+
+/* HOVER in mometul in care mausul ajunge pe element */
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+
+/* HOVER in duce in sus trei pixeli, iar Active, cand apesi efectiv, il lasa in jos 1 pixel ceea ce pare ca
+elemetul se apropie cumva de vizitator */
+/* efectiv cand elemtul este apsat, fac o combinatie atat de frumoasa */
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+
+.btn--white {
+  background-color: 3; }
+
+/* -::AFTER creeaza un element exact dupa elementul specificat de tine, poti sa ii dai anumite proprietati
+    - cea mai importanta propietate este CONTENT:'', chiar daca il pui gol, ca sa apara pe ecran,trebuie sa o pui
+    -de asemnea DISPLAY, trebuie setat modul in care vrei sa fie afisat pe ecran */
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background-color: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 10rem;
+  transition: all 0.4s;
+  /* aici este momentul 0, inainte sa incepa efectiv tranzitia, totul dureza 4secunde */ }
+
+.btn:hover::after {
+  /* aici este momentul final 100% */
+  transform: scaleX(1.4) scaleY(1.5);
+  opacity: 0; }
+
+.btn--animated {
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  /* seteaza aceleas proprietatoi de la animati in intea inceperi animatiei adica la o */
+  animation-fill-mode: backwards; }

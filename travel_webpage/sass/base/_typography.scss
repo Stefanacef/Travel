@@ -1,0 +1,77 @@
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /* font-size: 16px; */
+    /* line-height: este dinstranta intre randuri cea recomandata este de 1,6; */
+    line-height: 1.7;
+    padding: 3rem;
+    color: $color-dark-gray;
+  }
+
+
+
+.heading-primay {
+    color: $color-white;
+    /* in caz ca elemntul tremura,nu am inteles prea mult  */
+    backface-visibility: hidden;
+    margin-bottom: 4rem;
+    &--main,
+    &--sub {
+     display: block;
+     animation-duration: 1s;
+     /* cum sa fie animatia, mai inect la inceput si mai acelerata la sfrasit */
+     animation-timing-function: ease-in;
+  }
+    &--main {
+     font-size: 6rem;
+     font-weight: 800;
+     letter-spacing: 2.5rem;
+     /* ca animatia sa aiba loc pe un anumit obiect trebuie sa scriem denumirea animatiei in element
+      -durata este de o secunda, asa cum este scis si mai jos, tota animatia se va face intr-o secunda
+      -schimbarea opacitati,miscrile pe axa x sau y  */
+    animation-name: moveInLeft;
+  }
+  &--sub {
+    font-size: 4rem;
+    letter-spacing: 0.68rem;
+    animation-name: moveInRight;
+    position: relative;
+    right: 0.6rem;
+    font-weight: 500;
+  }
+  }
+  .heading-secondary{
+    font-size: 3.5rem;
+    //text-transform:uppercase;
+    font-weight: 700;
+    //gradient
+    background-image: linear-gradient(to right,
+     $color-primary-light,
+     $color-primary-dark);
+     // sa se termine unde se termina textul
+     display: inline-block;
+     -webkit-background-clip:text;
+     color:transparent;
+     background-clip: text;
+     //trebuie sa pui transition daca folosesti transporm
+     transition: all .2s;
+    //  &:hover{ asta face sa se miste titul
+    //    //cumva roteste de la mijloc
+    //    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    //    //in directia x .5rem
+    //    //in directia y .1 rem
+    //    //2 rem blura
+    //    text-shadow: .5rem 1rem 2rem rgba($color-back, .2);
+    //  }
+  }
+  .heading-tertiary{
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .paragraph{
+   font-size: $default-font-size;
+   &:not(:last-child){
+     margin-bottom: 3rem;
+   }
+  }

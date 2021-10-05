@@ -1,0 +1,42 @@
+.header {
+    /* unul din cele mai importante lucruri este vh, care defapt pune acel header sa aiba o inaltime de 95%
+      din intregul egrac, cumva asa s-ar traduce  */
+    height: 95vh;
+    background-image: linear-gradient(
+        /* Asa se construieste gradient, ultimul parametru de la rgba este opacitatea!! */
+          to right,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url(../imagini/munteDecup-min.jpg);
+    background-size: cover;
+    /* orccat de mic ar fi ecranul,imaginea nu se va misca din top,asta face bk-position:top, ceea ce este super */
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* acest clip-path, i-a coordonate x,y incepand din colul stang sus! */
+    position: relative;
+    /* ------------LOGO------------- */
+     &__logo-box {
+    /* nu uita ca absolut sa mearga, parintele lui trebuie sa fie pozitionat relativ,
+      daca parintele nu e relativ va pozitiona elemtul in functie de body */
+     position: absolute;
+     top: 4rem;
+     left: 4rem;
+  }
+    &__logo {
+     height: 3.5rem;
+  }
+  /* --------------HEADING TEXT---------------- */
+  
+  &__text-box {
+     position: absolute;
+     top: 40%;
+     left: 50%;
+    /* deci acest transfor, muta centrele(mijloacele elementului,luta cel din lijloc in stanga cu 50% si cel 
+  celallat sus, defapt sunt axa x si y transform:traslate */
+     transform: translate(-50%, -50%);
+     text-align: center;
+  }
+  }
+
+ 

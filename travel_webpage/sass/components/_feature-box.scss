@@ -1,0 +1,30 @@
+.feature-box{
+   background: rgba(255, 255, 255, 0.5);
+   box-shadow: 0rem 1.5rem 4rem rgba(0,0,0,0.15);
+   border-radius:  0.03rem;
+   border-top: 1px solid rgba(255, 255, 255, 0.5);
+   border-left: 1px solid rgba(255, 255, 255, 0.5);
+   font-size: 1.5rem;
+   padding: 3rem;
+   text-align:center;
+   transition: all .3s;
+   
+
+&__icone{
+    font-size:6rem;
+    background-image: linear-gradient(to right,
+    $color-primary-light,
+    $color-primary-dark);
+    // sa se termine unde se termina textul
+    display: inline-block;
+    -webkit-background-clip:text;
+    color:transparent;
+    background-clip: text;
+
+}
+&:hover{
+    transform: translateY(-1.5rem) scale(1.03);
+}
+
+
+}

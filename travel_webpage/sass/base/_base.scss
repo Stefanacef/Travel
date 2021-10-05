@@ -1,0 +1,32 @@
+/* Acestra * este seletorul universal, cum paginile vin cu un style predefinit
+acesta * va elimina acele predefiniir la modul general pe toata elementele */
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  /* Acesta box-sizing:border-box;insemna ca ca latimea si inaltimea raman fix cele pe care leai pus
+    nu se vorm modifica in functie de volumul contentului, daca vrei sa se modifice folosesti box-sizing: content-box; */
+  box-sizing: inherit;
+}
+
+html {
+  /* Astea inseamna defapt 10 pixeli
+    16 pixeli=100%
+    10%=62.5% */
+  font-size: 62.5%;
+ 
+  @include respond(tab-land){
+    font-size: 56.25%; //1 rem ==9px 9/16 
+  }
+ @include respond(tab-port){
+  font-size: 50%; //1 rem ==8px 8/16 
+}
+
+ @include respond(big-desktop){
+   font-size: 75%; //1 rem ==12px 12/16 
+ }
+}
+body {
+  box-sizing: border-box;
+  }

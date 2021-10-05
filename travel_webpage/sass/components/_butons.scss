@@ -1,0 +1,109 @@
+/* HOVER in mometul in care mausul ajunge pe element */
+.btn{
+    /* --BTN MAIN-HADER-- */
+    /* Am pus link,pentru ca acest obiect este de tip link
+    -Visited, insemna ca a vizitat candva acest buton, dar noi vrem sa arate la fel ca si cand nu l-ar fi vizitat */
+     text-align: center;
+     &,
+     &:link,
+      &:visited {
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        // color: $color-dark-gray;
+        text-transform: uppercase;
+        display: inline-block;
+        border-radius: 10rem;
+        position: relative;
+        transition: all 0.2s;
+        font-size: $default-font-size;
+
+        // shimbari pentru botaoene de tin button
+          border: none;
+          cursor:pointer;
+      }
+      &:hover { 
+        transform: translateY(-0.3rem);
+        box-shadow: 0 10px 20px rgba($color-black, 0.2);
+        &::after {
+          /* aici este momentul final 100% */
+          transform: scaleX(1.4) scaleY(1.5);
+          opacity: 0;
+        }
+      }
+      /* HOVER in duce in sus trei pixeli, iar Active, cand apesi efectiv, il lasa in jos 1 pixel ceea ce pare ca
+      elemetul se apropie cumva de vizitator */
+      /* efectiv cand elemtul este apsat, fac o combinatie atat de frumoasa */
+      &:active,
+      &:focus {
+        transform: translateY(-0.1rem);
+        box-shadow: 0 5px 10px rgba($color-black, 0.2);
+        outline:none;
+      }
+      &--green {
+        background-color: $color-primary;
+        color: $color-white;
+        &::after{
+          background-color: $color-primary;
+        }
+      }
+      &--white {
+        background-color: $color-white;
+        color: $color-dark-gray;
+        &::after{
+          background-color: $color-white;
+        }
+       
+      }
+      
+      /* -::AFTER creeaza un element exact dupa elementul specificat de tine, poti sa ii dai anumite proprietati
+          - cea mai importanta propietate este CONTENT:'', chiar daca il pui gol, ca sa apara pe ecran,trebuie sa o pui
+          -de asemnea DISPLAY, trebuie setat modul in care vrei sa fie afisat pe ecran */
+      &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        // background-color: $color-white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        border-radius: 10rem;
+        transition: all 0.4s;
+        /* aici este momentul 0, inainte sa incepa efectiv tranzitia, totul dureza 4secunde */
+      }
+      
+      &--animated {
+        animation: moveInBottom 0.5s ease-out 0.75s;
+        /* seteaza aceleas proprietatoi de la animati in intea inceperi animatiei adica la o */
+        animation-fill-mode: backwards;
+      }
+    }
+
+    .btn-text{
+      &:link,
+      &:visited{
+         color: $color-primary;
+         display: inline-block;
+         text-decoration: none;
+         border-bottom: 1px solid $color-primary;
+         padding: 3px;
+         font-size: $default-font-size;
+         transition: all .2s;
+         backface-visibility: hidden;
+      }
+      &:hover{
+        background-color: $color-primary;
+        color:$color-white;
+        //0 pentru x
+        // 1 rem pentr y
+        // 2 rem pentru bluraj
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform:translateY(-2px);
+        
+      }
+      &:active{
+        box-shadow: 0 1rem 1rem rgba($color-black, .15);
+        transform:translateY(0)
+      }
+    }
